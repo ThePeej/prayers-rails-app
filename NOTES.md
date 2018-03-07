@@ -33,5 +33,3 @@ Model Associations
 	Comments
 		Belongs to Commentor (user)
 		Belongs to Commented_Prayer (prayer)
-
-	
