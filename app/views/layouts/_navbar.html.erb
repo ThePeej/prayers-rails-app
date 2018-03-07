@@ -1,0 +1,39 @@
+<nav class="navbar" role="navigation" aria-label="main navigation">
+
+  <div class="navbar-brand">
+    <a class="navbar-item" href="/">
+      <img src="/pray.png" alt="Pray For One Another">
+    </a>
+  </div>
+
+  <div class="navbar-menu">
+      <div class="navbar-start">
+      <a class="navbar-item" href='/prayers'>
+      Prayers
+    </a>
+    <a class="navbar-item" href='/groups'>
+      Groups
+    </a>
+
+    </div>
+
+    <div class="navbar-end">
+      <% if !user_signed_in? %>
+        <a class="navbar-item" href='/login'>
+          Login
+        </a>
+        <a class="navbar-item" href='/signup'>
+          Sign Up
+        </a>
+        <% else %>
+        <a class="button is-info is-rounded is-outlined new_prayer" href="/prayers/new">New Prayer Request</a>
+        <a class="navbar-item" href='/account'>
+          <strong><%=current_user.username%></strong>
+        </a>
+        <a class="navbar-item" href='/logout'>
+          Logout
+        </a>
+      <% end %>
+    </div>
+  </div>
+</nav>
