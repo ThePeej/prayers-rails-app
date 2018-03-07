@@ -7,32 +7,19 @@
   </div>
 
   <div class="navbar-menu">
-      <div class="navbar-start">
-      <a class="navbar-item" href='/prayers'>
-      Prayers
-    </a>
-    <a class="navbar-item" href='/groups'>
-      Groups
-    </a>
-
+    <div class="navbar-start">
+      <%= link_to "Prayers", prayers_path, :class => "navbar-item"%>
+      <%= link_to "Groups", groups_path, :class => "navbar-item"%>
     </div>
 
     <div class="navbar-end">
       <% if !user_signed_in? %>
-        <a class="navbar-item" href='/login'>
-          Login
-        </a>
-        <a class="navbar-item" href='/signup'>
-          Sign Up
-        </a>
-        <% else %>
-        <a class="button is-info is-rounded is-outlined new_prayer" href="/prayers/new">New Prayer Request</a>
-        <a class="navbar-item" href='/account'>
-          <strong><%=current_user.username%></strong>
-        </a>
-        <a class="navbar-item" href='/logout'>
-          Logout
-        </a>
+        <%= link_to "Log In", new_user_session_path, :class => "navbar-item"%>
+        <%= link_to "Sign Up", new_user_registration_path, :class => "navbar-item"%>
+      <% else %>
+        <%= link_to "New Prayer Request", new_prayer_path,:class => "button is-info is-rounded is-outlined new_prayer" %>
+        <%= link_to current_user.username, edit_user_registration_path, :class => "navbar-item", :style =>'font-weight: bold;' %>
+        <%= link_to "Log Out", destroy_user_session_path, method: :delete, :class => "navbar-item" %>
       <% end %>
     </div>
   </div>

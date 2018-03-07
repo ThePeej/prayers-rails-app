@@ -2,69 +2,7 @@
 	<div class="column is-one-third is-offset-one-third">
 		<h1 class="title">Sign up</h1>
 		<p class="subtitle">*required</p>
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-			<div class="field">
-        <%= f.label :username, "Username*", :class => "label" %>
-				<p class="control has-icons-left">
-            <%= f.text_field :username, :class => "input" %>
-			    	<span class="icon is-small is-left"><i class="fas fa-user"></i></span>
-				</p>
-			</div>
-			<div class="field">
-				<%= f.label :email, "Email*", :class => "label" %>
-				<p class="control has-icons-left">
-            <%= f.text_field :email, :class => "input" %>
-			    	<span class="icon is-small is-left"><i class="fas fa-envelope"></i></span>
-				</p>
-			</div>
-			<div class="field">
-				<%= f.label :password, "Password* (6 characters minimum)", :class => "label" %>
-				<p class="control has-icons-left">
-					<%= f.password_field :password, :class => "input" %>
-			    	<span class="icon is-small is-left"><i class="fas fa-lock"></i></span>
-				</p>
-			</div>
-      <div class="field">
-				<%= f.label :password_confirmation, "Password confirmation*", :class => "label" %>
-				<p class="control has-icons-left">
-          <%= f.password_field :password_confirmation, :class => "input" %>
-			    	<span class="icon is-small is-left"><i class="fas fa-lock"></i></span>
-				</p>
-			</div>
-			<br>
-			<div class="field">
-				<p class="help">Optional:</p>
-        <%= f.label :name, :class => "label" %>
-				<p class="control">
-				    <%= f.text_field :name, :class => "input" %>
-				</p>
-			</div>
-      <div class="field">
-        <%= f.label :bio, :class => "label" %>
-				<p class="control">
-				    <%= f.text_field :bio, :class => "input" %>
-				</p>
-			</div>
-      <div class="field">
-        <%= f.label :church, "Home Church", :class => "label" %>
-				<p class="control">
-				    <%= f.text_field :church, :class => "input" %>
-				</p>
-			</div>
-			<div class="field">
-        <%= f.label :verse, "Favorite Verse", :class => "label" %>
-				<p class="control">
-          <%= f.text_area :verse, :class => "input" %>
-				</p>
-			</div>
-			<div class="field">
-			    <p class="control">
-			    	<button class="button is-success">
-			      	Sign Up
-			    	</button>
-			  	</p>
-			</div>
-		<% end %>
+    <%= render 'user_registration_form'%>
     <%= render "devise/shared/links" %>
 	</div>
 </div>
