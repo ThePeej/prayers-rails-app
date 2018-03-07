@@ -1,0 +1,2 @@
+class GroupPrayer < ApplicationRecord
+end
