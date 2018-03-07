@@ -1,0 +1,43 @@
+<% if !!flash[:greeting] %>
+    <div class="notification is-success">
+	  	<h4><%= flash[:greeting] %></h4>
+	</div>
+  <br>
+<% end %>
+
+<% if !!flash[:error] %>
+	<div class="notification is-danger">
+  		<h4><%= flash[:error] %></h4>
+  	</div>
+<% end %>
+
+<div class="columns">
+	<div class="column is-8 is-offset-2">
+		<% if @prayers.count > 0 %>
+			<h2 class="title is-2 centered">Pray for one another!</h2>
+			<% @prayers.each do |prayer| %>
+				<a href="/prayers/<%=prayer.id%>">
+				  	<article class="message">
+				    	<div class="message-header">
+			        		<p>
+			        			<% if prayer.anonymous? %>
+									<strong>Anonymous - </strong>
+								<% else %>
+									<strong><%=prayer.author.username%> - </strong>
+								<% end %>
+								<em><%=prayer.overview%></em>
+							</p>
+								<%= prayer.created_at.strftime("%m/%d/%y at %I:%M%p %Z")%>
+						</div>
+						<div class="message-body">
+							<%=prayer.details%>	
+				    	</div>
+				  	</article>
+				</a>
+				<br>
+			<% end %>
+		<% else %>
+			<h2 class="title">No public prayers to display</h2>
+		<% end %>
+	</div>
+</div>
