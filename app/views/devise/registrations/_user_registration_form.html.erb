@@ -10,11 +10,5 @@
     <%= render partial: 'user_info_opt', locals:{f: f, type: "text_field", attribute: "bio", label: "Bio"} %>
     <%= render partial: 'user_info_opt', locals:{f: f, type: "text_field", attribute: "church", label: "Home Church"} %>
     <%= render partial: 'user_info_opt', locals:{f: f, type: "text_area", attribute: "verse", label: "Favorite Verse"} %>
-  <div class="field">
-      <p class="control">
-        <button class="button is-success">
-          Sign Up
-        </button>
-      </p>
-  </div>
+    <%= f.submit :class => "button is-success"%>
 <% end %>
