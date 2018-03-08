@@ -6,6 +6,7 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
+    @prayers = @group.prayers.sort.reverse
   end
 
   def new
@@ -19,7 +20,7 @@ class GroupsController < ApplicationController
 
     if group.save
       flash[:notice] = "Successfully started a new prayer group"
-      redirect_to groups_path
+      redirect_to group_path(group)
     else
       flash[:alert] = "Prayer group requires a name"
       redirect_to new_group_path
@@ -31,7 +32,14 @@ class GroupsController < ApplicationController
   end
 
   def update
-
+    group = Group.find(params[:id])
+    if group.update(group_params)
+      flash[:notice] = "Successfully updated prayer group"
+      redirect_to group_path(group)
+    else
+      flash[:alert] = "Prayer group requires a name"
+      redirect_to new_group_path
+    end
   end 
 
   def delete
