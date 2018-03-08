@@ -13,7 +13,6 @@
 
   on <%= @prayer.created_at.strftime("%m/%d/%y at %I:%M%p %Z")%></p>
 
-
   <br>
 
   <strong>Details:</strong>
@@ -21,7 +20,7 @@
     <h5 class="subtitle is-5"><%= @prayer.details %></h5>
   </div>
 
-    <br>
+  <br>
 
   <% if @prayer.author == current_user %>
     <h5>You shared this in:</h5>
@@ -45,3 +44,10 @@
 
   <br>
 </div>
+<h1 class="title is-4"><u>Comments</u></h1>
+<%= form_for @prayer do |f| %>
+  <%= f.fields_for :comments, @prayer.comments.build do |comments| %>
+    <%= comments.text_area :content, class: "textarea", placeholder: "Add a comment" %>
+  <% end %>
+  <%= f.submit "Send Encouragement", class: "button is-dark" %>
+<% end %>

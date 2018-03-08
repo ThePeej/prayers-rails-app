@@ -1,12 +1,12 @@
 To Do
 
-Finish add member feature
-
-Add Leave/Join routes/paths for group/controller
+Finish add member feature (nested form writer?)
 
 Add prechecked option for prayer if user has no groups
 
 refactor controllers to set group/prayer before specific actions (group.find(params[:id]))
+
+add comments to prayer show page (via nested resources)
 
 
 
