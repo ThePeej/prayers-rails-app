@@ -34,23 +34,7 @@
 <p>--------------------</p>
 <h3 class="title is-4">Group Prayers:</h3>
 
-<% @prayers.each do |prayer| %>
-  <a href="/prayers/<%=prayer.id%>">
-    <article class="message">
-      <div class="message-header">
-        <p>
-          <strong><%= "Anonymous" if prayer.anonymous? %><%=prayer.author.username if !prayer.anonymous?%></strong>
-          <em> - <%= prayer.overview %></em>
-        </p>
-        <%= prayer.created_at.strftime("%m/%d/%y at %I:%M%p %Z")%>
-      </div>
-      <div class="message-body">
-        <%=prayer.details%>
-      </div>
-    </article>
-  </a>
-  <br>
-<% end %>
+<%= render partial: 'group_prayers', collection: @group.show_prayers, as: :prayer %>
 
 <!-- Group administrative buttons -->
 
