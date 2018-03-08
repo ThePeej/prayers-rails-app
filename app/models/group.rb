@@ -1,5 +1,6 @@
 class Group < ApplicationRecord
   validates :name, presence: true
+  validates :name, uniqueness: true
   validates :leader, presence: true
   
   has_many :user_groups

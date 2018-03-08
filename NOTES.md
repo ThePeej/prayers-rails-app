@@ -1,3 +1,16 @@
+To Do
+
+Add groups to prayer form
+
+Add Leave/Join routes/paths for group/controller
+
+
+
+
+
+
+
+
 Model Associations
 
 	User

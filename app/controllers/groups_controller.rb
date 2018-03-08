@@ -17,12 +17,13 @@ class GroupsController < ApplicationController
     group = Group.new(group_params)
     group.leader = current_user
     group.members << current_user
+    
 
     if group.save
       flash[:notice] = "Successfully started a new prayer group"
       redirect_to group_path(group)
     else
-      flash[:alert] = "Prayer group requires a name"
+      flash[:alert] = group.errors.full_messages.to_sentence
       redirect_to new_group_path
     end
   end
@@ -37,13 +38,16 @@ class GroupsController < ApplicationController
       flash[:notice] = "Successfully updated prayer group"
       redirect_to group_path(group)
     else
-      flash[:alert] = "Prayer group requires a name"
+      flash[:alert] = group.errors.full_messages.to_sentence
       redirect_to new_group_path
     end
   end 
 
-  def delete
-    @group = Group.find(params[:id])
+  def destroy
+    group = Group.find(params[:id])
+    group.destroy
+		flash[:notice] = "Group was deleted"
+		redirect_to groups_path
   end
 
   private
