@@ -4,7 +4,7 @@ Add groups to prayer form
 
 Add Leave/Join routes/paths for group/controller
 
-
+Add prechecked option for prayer if user has no groups
 
 
 

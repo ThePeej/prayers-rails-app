@@ -53,6 +53,6 @@ class PrayersController < ApplicationController
   private
 
   def prayer_params
-    params.require("prayer").permit(:overview, :details, :is_anonymous, :is_public)
+    params.require("prayer").permit(:overview, :details, :is_anonymous, :is_public, group_ids:[])
   end
 end

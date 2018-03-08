@@ -32,8 +32,7 @@
     <% end %>
 
     <% @prayer.groups.each do |group| %>
-      <%# <a class="button is-light" href="/groups/<%=group.id%>"><%=group.name%></a> %>
-      <%= link_to group.name, groups_path, :class => "button is-light"%>
+      <%= link_to group.name, group_path(group), :class => "button is-light"%>
     <% end %>
 
     <br><br>

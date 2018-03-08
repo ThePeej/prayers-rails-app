@@ -1,3 +1,5 @@
+require 'pry'
+
 class Prayer < ApplicationRecord
   validates :overview, presence: true
 	
@@ -11,6 +13,14 @@ class Prayer < ApplicationRecord
 
   def self.all_public
     self.all.find_all{|prayer| prayer.is_public}.sort.reverse #collects and displays only public prayers
+  end
+
+  def group_ids=(group_ids)
+    group_ids.delete("")
+    group_ids.each do |group_id|
+      self.groups << Group.find(group_id)
+    end
+    self.save
   end
 
 end
