@@ -9,8 +9,8 @@ class Prayer < ApplicationRecord
 
   belongs_to :author, :class_name => "User"
 
-  def self.public
-    self.all.find_all{|prayer| prayer.public?}.sort.reverse #collects and displays only public prayers
+  def self.all_public
+    self.all.find_all{|prayer| prayer.is_public}.sort.reverse #collects and displays only public prayers
   end
 
 end

@@ -2,7 +2,7 @@ class PrayersController < ApplicationController
   # skip_before_action :authenticate_user!, only: [:index], raise: false
 
   def index
-    @prayers = Prayer.all
+    @prayers = Prayer.all_public
   end
 
   def new
@@ -13,6 +13,13 @@ class PrayersController < ApplicationController
     prayer = Prayer.new(prayer_params)
     prayer.author = current_user
     
+    if prayer.save
+      flash[:notice] = "Successfully shared a prayer"
+      redirect_to prayers_path
+    else
+      flash[:alert] = prayer.errors.full_messages.to_sentence
+      redirect_to new_prayer_path
+    end
   end
 
 
