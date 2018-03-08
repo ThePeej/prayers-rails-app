@@ -1,26 +1,3 @@
-<% if @prayers.count > 0 %>
-	<h2 class="title is-2 centered">Pray for one another!</h2>
-	<% @prayers.each do |prayer| %>
-		<a href="/prayers/<%=prayer.id%>">
-				<article class="message">
-					<div class="message-header">
-							<p>
-								<% if prayer.is_anonymous %>
-							<strong>Anonymous - </strong>
-						<% else %>
-							<strong><%=prayer.author.username%> - </strong>
-						<% end %>
-						<em><%=prayer.overview%></em>
-					</p>
-						<%= prayer.created_at.strftime("%m/%d/%y at %I:%M%p %Z")%>
-				</div>
-				<div class="message-body">
-					<%=prayer.details%>	
-					</div>
-				</article>
-		</a>
-		<br>
-	<% end %>
-<% else %>
-	<h2 class="title">No public prayers to display</h2>
-<% end %>
+<h2 class="title is-2 centered">Pray for one another!</h2>
+<%= render partial: 'public_prayers_collection', collection: @prayers, as: :prayer || "No public prayers to display" %>
+
