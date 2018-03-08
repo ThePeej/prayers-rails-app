@@ -65,11 +65,19 @@ class GroupsController < ApplicationController
   end
 
   def join
-
+    group = Group.find(params[:id])
+    group.members << current_user
+    group.save
+    flash[:notice] = "You've joined the group!"
+    redirect_to group_path(group)
   end
 
   def leave
-
+    group = Group.find(params[:id])
+    group.members.delete(current_user)
+    group.save
+    flash[:notice] = "You've left the group"
+    redirect_to group_path(group)
   end 
 
   private

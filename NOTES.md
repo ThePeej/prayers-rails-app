@@ -6,6 +6,8 @@ Add Leave/Join routes/paths for group/controller
 
 Add prechecked option for prayer if user has no groups
 
+refactor controllers to set group/prayer before specific actions (group.find(params[:id]))
+
 
 
 
