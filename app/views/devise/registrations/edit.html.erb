@@ -1,14 +1,12 @@
-<div class="columns">
-<div class="column is-one-third is-offset-one-third">
-  <h1 class="title">Edit Account</h1>
-		<p class="subtitle">*required</p>
-  <%= render 'user_registration_form' %>
 
-  <h3>Cancel my account</h3>
+<h1 class="title">Edit Account</h1>
+<p class="subtitle">*required</p>
+<%= render 'user_registration_form' %>
 
-  <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+<h3>Cancel my account</h3>
 
-  <%= link_to "Back", :back %>
-</div>
-</div>
+<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+
+<%= link_to "Back", :back %>
+
 
