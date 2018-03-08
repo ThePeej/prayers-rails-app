@@ -31,7 +31,14 @@ class PrayersController < ApplicationController
   end
 
   def update
-    raise params
+    prayer = Prayer.find(params[:id])
+    if prayer.update(prayer_params)
+      flash[:notice] = "Successfully updated a prayer"
+      redirect_to prayer_path(prayer)
+    else
+      flash[:alert] = prayer.errors.full_messages.to_sentence
+      redirect_to edit_prayer_path
+    end
   end
 
   def destroy
