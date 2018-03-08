@@ -49,10 +49,33 @@ class GroupsController < ApplicationController
 		redirect_to groups_path
   end
 
+  def add
+    group = Group.find(params[:id])
+    raise group_params[:members].inspect
+    # if User.find_by(:username => group_params[:members]) || User.find_by(:email => group_params[:members])
+		# 	new_member = User.find_by(:username => group_params[:members]) if !!User.find_by(:username => group_params[:members])
+		# 	new_member = User.find_by(:email => group_params[:members]) if !!User.find_by(:email => group_params[:members])
+		# 	new_member = User.find_by(:name => group_params[:members]) if !!User.find_by(:email => group_params[:members])
+		# 	flash[:notice] = "Added #{new_member.name} to the group!"
+		# 	group.members << new_member
+		# else
+		# 	flash[:alert] = "Unable to find that person"
+		# end
+		# redirect "/groups/#{group.id}"
+  end
+
+  def join
+
+  end
+
+  def leave
+
+  end 
+
   private
 
   def group_params
-    params.require("group").permit(:name, :description, :is_public)
+    params.require("group").permit(:name, :description, :is_public, members:[:name])
   end
 
 end

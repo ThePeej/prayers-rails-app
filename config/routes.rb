@@ -10,4 +10,7 @@ Rails.application.routes.draw do
   root to: "home#index"
 
   get '/home', to: 'home#landing', as: 'landing'
+  patch '/groups/:id/add', to: 'groups#add', as: 'add_member'
+  patch '/groups/:id/join', to: 'groups#join', as: 'join_group'
+  patch '/groups/:id/leave', to: 'groups#leave', as: 'leave_group'
 end

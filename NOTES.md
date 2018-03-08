@@ -1,6 +1,6 @@
 To Do
 
-Add groups to prayer form
+Finish add member feature
 
 Add Leave/Join routes/paths for group/controller
 

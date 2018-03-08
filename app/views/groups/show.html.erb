@@ -14,18 +14,19 @@
 
 <% if @group.leader == current_user %>
 
-  <form method="post" action="/groups/<%=@group.id%>/add_member">
-    <label class="label" for="add_member">Add Member By Name, Email, or Username:</label>
-    <div class="field has-addons">
-      
-      <div class="control">
-        <input class="input" type="text" id="add_member" name="add_member"/>	
+  <%= form_for @group, :url => add_member_path do |f| %>
+    <%=f.fields_for :members, @group.members.build do |members_fields|%>
+      <%= members_fields.label :name, "Add Member By Name, Email, or Username:", class: "label" %>
+      <div class="field has-addons">
+        <div class="control">
+          <%= members_fields.text_field :name, class: "input"%>
+        </div>
+        <div class="control">
+          <%= members_fields.submit "Add", class: "button is-dark" %>
+        </div>
       </div>
-      <div class="control">
-        <input class="button is-dark" type="submit" value="Add"/>
-      </div>
-    </div>
-  </form>
+    <% end %>
+  <% end%>
   
 <% end %>
 
@@ -38,18 +39,4 @@
 
 <!-- Group administrative buttons -->
 
-<% if @group.is_public && !@group.members.include?(current_user) %>
-  <a class="button is-info" href="/groups/<%=@group.id%>/join">Join Group</a>
-<% end %>
-
-<% if @group.leader != current_user && @group.members.include?(current_user) %>
-  <a class="button is-danger" href="/groups/<%=@group.id%>/leave">Leave Group</a>
-  <%= link_to "Leave Group", edit_group_path(@group), class: "button is-info" %>
-<% end %>
-
-<br><br>
-
-<% if @group.leader == current_user %>
-  <%= link_to "Edit Group", edit_group_path(@group), class: "button is-info" %>
-  <%= link_to "Delete Group", group_path(@group), data: { confirm: "Delete this group?" }, method: :delete, class: "button is-danger" %>
-<% end %>
+<%= render partial: 'admin_buttons', locals: {group: @group} %>

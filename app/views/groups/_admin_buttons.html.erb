@@ -1,0 +1,16 @@
+
+<% if group.is_public && !group.members.include?(current_user) %>
+  <a class="button is-info" href="/groups/<%=group.id%>/join">Join Group</a>
+<% end %>
+
+<% if group.leader != current_user && group.members.include?(current_user) %>
+  <a class="button is-danger" href="/groups/<%=group.id%>/leave">Leave Group</a>
+  <%= link_to "Leave Group", edit_group_path(group), class: "button is-info" %>
+<% end %>
+
+<br><br>
+
+<% if group.leader == current_user %>
+  <%= link_to "Edit Group", edit_group_path(group), class: "button is-info" %>
+  <%= link_to "Delete Group", group_path(group), data: { confirm: "Delete this group?" }, method: :delete, class: "button is-danger" %>
+<% end %>
