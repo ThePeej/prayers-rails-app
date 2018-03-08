@@ -9,4 +9,8 @@ class Group < ApplicationRecord
 	has_many :prayers, through: :group_prayers
 
 	belongs_to :leader, :class_name => "User"
+
+	def self.all_public
+    self.all.find_all{|group| group.is_public}.sort.reverse #collects and displays only public groups
+  end
 end
