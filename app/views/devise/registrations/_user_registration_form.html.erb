@@ -6,9 +6,10 @@
   <br>
   <div class="field">
     <p class="help">Optional:</p>
-    <%= render partial: 'user_info_opt', locals:{f: f, type: "text_field", attribute: "name", label: "Name"} %>
-    <%= render partial: 'user_info_opt', locals:{f: f, type: "text_field", attribute: "bio", label: "Bio"} %>
-    <%= render partial: 'user_info_opt', locals:{f: f, type: "text_field", attribute: "church", label: "Home Church"} %>
-    <%= render partial: 'user_info_opt', locals:{f: f, type: "text_area", attribute: "verse", label: "Favorite Verse"} %>
+    <%= render partial: 'user_info_opt', locals:{f: f, type: "text_field", attribute: "name", label: "Name", c: "input"} %>
+    <%= render partial: 'user_info_opt', locals:{f: f, type: "text_field", attribute: "bio", label: "Bio", c: "input"} %>
+    <%= render partial: 'user_info_opt', locals:{f: f, type: "text_field", attribute: "church", label: "Home Church", c: "input"} %>
+    <%= render partial: 'user_info_opt', locals:{f: f, type: "text_area", attribute: "verse", label: "Favorite Verse", c: "textarea"} %>
     <%= f.submit :class => "button is-success"%>
+  </div>
 <% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180307020341) do
+ActiveRecord::Schema.define(version: 20180308143849) do
 
   create_table "comments", force: :cascade do |t|
     t.text "content"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20180307020341) do
   create_table "groups", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.boolean "public?", default: false
+    t.boolean "is_public", default: false
     t.integer "leader_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -40,8 +40,8 @@ ActiveRecord::Schema.define(version: 20180307020341) do
     t.text "details"
     t.string "overview"
     t.integer "author_id"
-    t.boolean "anonymous?", default: false
-    t.boolean "public?", default: false
+    t.boolean "is_anonymous", default: false
+    t.boolean "is_public", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -12,4 +12,5 @@ class Prayer < ApplicationRecord
   def self.public
     self.all.find_all{|prayer| prayer.public?}.sort.reverse #collects and displays only public prayers
   end
+
 end
