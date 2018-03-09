@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
-  resources :groups
+  resources :groups do
+    patch 'add_member', on: :member
+    patch 'join', on: :member
+    patch 'leave', on: :member
+    resources :members, only: [:create]
+  end
+
+  # patch '/groups/:id/add', to: 'groups#add', as: 'add_member'
   
   resources :prayers do
     resources :comments
@@ -7,10 +14,9 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { registrations: "users/registrations"}
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root to: "home#index"
 
+
+  root to: "home#index"
   get '/home', to: 'home#landing', as: 'landing'
-  patch '/groups/:id/add', to: 'groups#add', as: 'add_member'
-  patch '/groups/:id/join', to: 'groups#join', as: 'join_group'
-  patch '/groups/:id/leave', to: 'groups#leave', as: 'leave_group'
+  
 end

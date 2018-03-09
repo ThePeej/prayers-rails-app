@@ -8,8 +8,6 @@ CanCan authorization
 
 Third Party User Login
 
-Finish add member feature (nested form writer?) (potentially move to edit group page within group form to use fields_for properly...... hopefully)
-
 
 
 

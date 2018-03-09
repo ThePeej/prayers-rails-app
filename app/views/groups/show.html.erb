@@ -13,7 +13,7 @@
 
 <% if @group.leader == current_user %>
 
-  <%= form_for @group, :url => add_member_path do |f| %>
+  <%= form_for @group, :url => add_member_group_path do |f| %>
     <%=f.fields_for :members, @group.members.build do |members_fields|%>
       <%= members_fields.label :name, "Add Member By Name, Email, or Username:", class: "label" %>
       <div class="field has-addons">
@@ -26,6 +26,12 @@
       </div>
     <% end %>
   <% end%>
+
+  <%# <%= form_for [prayer, comment] do |f| %> %>
+    <%# <%= f.hidden_field :prayer_id %> %>
+    <%# <%= f.text_area :content, class: "textarea", placeholder: "Add a comment" %> %>
+    <%# <%= f.submit "Send Encouragement", class: "button is-dark" %> %>
+  <%# <% end %> %>
   
 <% end %>
 
