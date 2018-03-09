@@ -1,6 +1,6 @@
 To Do
 
-Finish add member feature (nested form writer?)
+Finish add member feature (nested form writer?) (potentially move to edit group page within group form to use fields_for properly...... hopefully)
 
 Add prechecked option for prayer if user has no groups
 

@@ -24,6 +24,7 @@ class PrayersController < ApplicationController
 
   def show
     @prayer = Prayer.find(params[:id])
+    @comment = Comment.new(:prayer_id => params[:id])
   end
 
   def edit
