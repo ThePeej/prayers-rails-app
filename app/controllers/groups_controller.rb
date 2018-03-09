@@ -1,4 +1,6 @@
 class GroupsController < ApplicationController
+  include GroupsHelper
+  before_action :authenticate_user!
 
   def index
     @groups = Group.all_public
@@ -50,7 +52,7 @@ class GroupsController < ApplicationController
 
   def add
     set_group
-    raise group_params[:members].inspect
+    add_member
     # if User.find_by(:username => group_params[:members]) || User.find_by(:email => group_params[:members])
 		# 	new_member = User.find_by(:username => group_params[:members]) if !!User.find_by(:username => group_params[:members])
 		# 	new_member = User.find_by(:email => group_params[:members]) if !!User.find_by(:email => group_params[:members])

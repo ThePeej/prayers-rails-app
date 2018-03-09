@@ -1,5 +1,5 @@
 class PrayersController < ApplicationController
-  # before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:show, :new, :create, :edit, :update, :destroy]
 
   def index
     @prayers = Prayer.all_public
