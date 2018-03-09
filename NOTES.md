@@ -1,10 +1,8 @@
 To Do
 
-User account edit page
+User account/registration edit page (DEVISE)
 
-CanCan authorization
-
-Third Party User Login
+Third Party User Login (DEVISE/OMNIAUTH)
 
 
 

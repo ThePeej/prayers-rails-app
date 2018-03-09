@@ -8,7 +8,7 @@ Specs:
 - [x] The "through" part of the has_many through includes at least one user submittable attribute (attribute_name e.g. ingredients.quantity) - comments join table has submittable :content attribute
 - [x] Include reasonable validations for simple model objects (list of model objects with validations e.g. User, Recipe, Ingredient, Item) - Comments must contain content, Group must contain name, etc
 - [x] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes) - Prayers.all_public returns all public prayers in order from newest to oldest
-- [ ] Include a nested form writing to an associated model using a custom attribute writer (form URL, model name e.g. /recipe/new, Item) - prayer.group_ids=, allows prayer make associations with groups via the association through group_prayers.
+- [x] Include a nested form writing to an associated model using a custom attribute writer (form URL, model name e.g. /recipe/new, Item) - prayer.group_ids=, allows prayer make associations with groups via the association through group_prayers.
 - [x] Include signup (how e.g. Devise) - User can sign up
 - [x] Include login (how e.g. Devise) - User can log in
 - [x] Include logout (how e.g. Devise) - User can log out
@@ -18,7 +18,7 @@ Specs:
 - [x] Include form display of validation errors (form URL e.g. /recipes/new) - implementing flash notices
 
 Confirm:
-- [ ] The application is pretty DRY
-- [ ] Limited logic in controllers
-- [ ] Views use helper methods if appropriate
-- [x] Views use partials if appropriate
+- [x] The application is pretty DRY - implemented some before_action filters, and used many partials for repeating code
+- [x] Limited logic in controllers - tried to keep logic within models
+- [x] Views use helper methods if appropriate - helper methods and pundit policies used to control views
+- [x] Views use partials if appropriate - many partials used for forms
