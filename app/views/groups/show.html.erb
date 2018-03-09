@@ -20,7 +20,7 @@
 <br><br>
 <h3 class="title is-4">Group Prayers:</h3>
 
-<%= render(partial: 'group_prayers', collection: @group.show_prayers, as: :prayer) || "No public group prayers to display" %>
+<%= render(partial: 'group_prayers', collection: @group.show_prayers(current_user), as: :prayer) || "No public group prayers to display" %>
 
 <br>
 

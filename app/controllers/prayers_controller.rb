@@ -35,7 +35,7 @@ class PrayersController < ApplicationController
   def update
     set_prayer
     authorize @prayer, :author?
-    @prayer.groups.each{|group| group.prayers.delete(prayer)}
+    @prayer.groups.each{|group| group.prayers.delete(@prayer)}
     if @prayer.update(prayer_params)
       flash[:notice] = "Successfully updated a prayer"
       redirect_to prayer_path(@prayer)

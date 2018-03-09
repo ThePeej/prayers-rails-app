@@ -15,7 +15,12 @@ class Group < ApplicationRecord
     self.all.find_all{|group| group.is_public}.sort.reverse #collects and displays only public groups
   end
 
-  def show_prayers
-    self.prayers.sort.reverse
+  def show_prayers(user)
+    if self.members.include?(user)
+      self.prayers.sort.reverse
+    else
+      self.prayers.where(is_public: true).sort.reverse
+    end
   end
+  
 end

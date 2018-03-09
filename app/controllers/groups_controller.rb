@@ -8,6 +8,7 @@ class GroupsController < ApplicationController
 
   def show
     set_group
+    @prayers = policy_scope(Prayer)
     authorize @group
   end
 
