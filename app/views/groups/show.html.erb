@@ -11,7 +11,7 @@
 </ul>
 <br>
 
-<% if @group.leader == current_user %>
+<% if policy(@group).leader? %>
 
   <%= render partial: 'add_member_form', locals: {group: @group} %>
   

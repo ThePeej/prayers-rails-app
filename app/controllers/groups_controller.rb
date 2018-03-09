@@ -8,6 +8,7 @@ class GroupsController < ApplicationController
 
   def show
     set_group
+    authorize @group
   end
 
   def new
@@ -30,10 +31,12 @@ class GroupsController < ApplicationController
 
   def edit
     set_group
+    authorize @group, :leader?
   end
 
   def update
     set_group
+    authorize @group, :leader?
     if @group.update(group_params)
       flash[:notice] = "Successfully updated prayer group"
       redirect_to group_path(@group)
@@ -45,6 +48,7 @@ class GroupsController < ApplicationController
 
   def destroy
     set_group
+    authorize @group, :leader?
     @group.destroy
 		flash[:notice] = "Group was deleted"
 		redirect_to groups_path
@@ -52,6 +56,7 @@ class GroupsController < ApplicationController
 
   def add_member
     set_group
+    authorize @group, :leader?
     find_and_add_member
     redirect_to group_path(@group)
 
@@ -59,6 +64,7 @@ class GroupsController < ApplicationController
 
   def join
     set_group
+    authorize @group
     @group.members << current_user
     @group.save
     flash[:notice] = "You've joined the group!"
@@ -67,6 +73,7 @@ class GroupsController < ApplicationController
 
   def leave
     set_group
+    authorize @group
     @group.members.delete(current_user)
     @group.save
     flash[:notice] = "You've left the group"

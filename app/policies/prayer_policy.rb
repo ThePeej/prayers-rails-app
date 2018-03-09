@@ -5,15 +5,7 @@ class PrayerPolicy < ApplicationPolicy
     end
   end
 
-  def edit?
-    user == record.author
-  end
-
-  def update?
-    user == record.author
-  end
-
-  def destroy?
+  def author?
     user == record.author
   end
 

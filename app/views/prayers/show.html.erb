@@ -22,7 +22,7 @@
 
   <br>
 
-  <% if @prayer.author == current_user %>
+  <% if policy(@prayer).author? %>
     <h5>You shared this in:</h5>
     
     <%if @prayer.is_public %>
