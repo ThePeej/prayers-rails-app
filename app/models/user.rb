@@ -14,4 +14,13 @@ class User < ApplicationRecord
   
   has_many :comments
   has_many :commented_prayers, through: :comments, :source => :prayer
+
+  def public_groups
+    self.groups.find_all{|group|group.is_public}
+  end
+
+  def public_prayers
+    self.prayers.find_all{|prayer|prayer.is_public && !prayer.is_anonymous}.sort.reverse
+  end
+  
 end

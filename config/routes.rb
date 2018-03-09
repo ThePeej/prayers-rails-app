@@ -18,5 +18,7 @@ Rails.application.routes.draw do
 
   root to: "home#index"
   get '/home', to: 'home#landing', as: 'landing'
+
+  resources :users, only: [:show]
   
 end

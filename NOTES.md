@@ -1,7 +1,5 @@
 To Do
 
-User show page (public profile)
-
 User account edit page
 
 CanCan authorization
