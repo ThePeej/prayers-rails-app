@@ -23,4 +23,8 @@ class Prayer < ApplicationRecord
     self.save
   end
 
+  def all_comments
+    self.comments.sort.reverse
+  end
+
 end

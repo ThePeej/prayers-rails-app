@@ -1,7 +1,8 @@
 class CommentsController < ApplicationController
 
   def index
-
+    @prayer = Prayer.find(params[:prayer_id])
+    @comment = @prayer.all_comments
   end
 
   def create
