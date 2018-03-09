@@ -1,15 +1,15 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render partial: 'user_info_req', locals:{f: f, type: "text_field", attribute: "username", label: "Username*", icon: "fas fa-user"} %>
-  <%= render partial: 'user_info_req', locals:{f: f, type: "text_field", attribute: "email", label: "Email*", icon: "fas fa-envelope"} %>
-  <%= render partial: 'user_info_req', locals:{f: f, type: "password_field", attribute: "password", label: "Password* (6 characters minimum)", icon: "fas fa-lock"} %>
-  <%= render partial: 'user_info_req', locals:{f: f, type: "password_field", attribute: "password_confirmation", label: "Password confirmation*", icon: "fas fa-lock"} %>
+  <%= render partial: 'user_info', locals:{f: f, type: "text_field", attribute: "username", label: "Username*", c: "input"} %>
+  <%= render partial: 'user_info', locals:{f: f, type: "text_field", attribute: "email", label: "Email*", c: "input"} %>
+  <%= render partial: 'user_info', locals:{f: f, type: "password_field", attribute: "password", label: "Password* (6 characters minimum)", c: "input"} %>
+  <%= render partial: 'user_info', locals:{f: f, type: "password_field", attribute: "password_confirmation", label: "Password confirmation*", c: "input"} %>
   <br>
   <div class="field">
     <p class="help">Optional:</p>
-    <%= render partial: 'user_info_opt', locals:{f: f, type: "text_field", attribute: "name", label: "Name", c: "input"} %>
-    <%= render partial: 'user_info_opt', locals:{f: f, type: "text_field", attribute: "bio", label: "Bio", c: "input"} %>
-    <%= render partial: 'user_info_opt', locals:{f: f, type: "text_field", attribute: "church", label: "Home Church", c: "input"} %>
-    <%= render partial: 'user_info_opt', locals:{f: f, type: "text_area", attribute: "verse", label: "Favorite Verse", c: "textarea"} %>
+    <%= render partial: 'user_info', locals:{f: f, type: "text_field", attribute: "name", label: "Name", c: "input"} %>
+    <%= render partial: 'user_info', locals:{f: f, type: "text_field", attribute: "bio", label: "Bio", c: "input"} %>
+    <%= render partial: 'user_info', locals:{f: f, type: "text_field", attribute: "church", label: "Home Church", c: "input"} %>
+    <%= render partial: 'user_info', locals:{f: f, type: "text_area", attribute: "verse", label: "Favorite Verse", c: "textarea"} %>
     <%= f.submit :class => "button is-success"%>
   </div>
 <% end %>

@@ -1,8 +1,8 @@
 <h1 class="title">Log In</h1>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <%= render partial: 'devise/registrations/user_info_req', locals:{f: f, type: "text_field", attribute: "email", label: "Email*", icon: "fas fa-envelope"} %>
-  <%= render partial: 'devise/registrations/user_info_req', locals:{f: f, type: "password_field", attribute: "password", label: "Password* (6 characters minimum)", icon: "fas fa-lock"} %>
+  <%= render partial: 'devise/registrations/user_info', locals:{f: f, type: "text_field", attribute: "email", label: "Email", c: "input"} %>
+  <%= render partial: 'devise/registrations/user_info', locals:{f: f, type: "password_field", attribute: "password", label: "Password", c: "input"} %>
 
   <% if devise_mapping.rememberable? -%>
     <div class="field">

@@ -19,7 +19,7 @@ class GroupsController < ApplicationController
     @group.leader = current_user
     @group.members << current_user
     
-    if group.save
+    if @group.save
       flash[:notice] = "Successfully started a new prayer group"
       redirect_to group_path(@group)
     else
