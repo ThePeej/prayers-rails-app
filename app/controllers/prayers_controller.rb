@@ -1,8 +1,13 @@
 class PrayersController < ApplicationController
-  # skip_before_action :authenticate_user!, only: [:index], raise: false
+  # before_action :authenticate_user!
 
   def index
     @prayers = Prayer.all_public
+  end
+
+  def show
+    set_prayer
+    @comment = Comment.new(:prayer_id => params[:id])
   end
 
   def new
@@ -10,42 +15,37 @@ class PrayersController < ApplicationController
   end
 
   def create
-    prayer = Prayer.new(prayer_params)
-    prayer.author = current_user
+    @prayer = Prayer.new(prayer_params)
+    @prayer.author = current_user
     
-    if prayer.save
+    if @prayer.save
       flash[:notice] = "Successfully shared a prayer"
       redirect_to prayers_path
     else
-      flash[:alert] = prayer.errors.full_messages.to_sentence
+      flash[:alert] = @prayer.errors.full_messages.to_sentence
       redirect_to new_prayer_path
     end
   end
 
-  def show
-    @prayer = Prayer.find(params[:id])
-    @comment = Comment.new(:prayer_id => params[:id])
-  end
-
   def edit
-    @prayer = Prayer.find(params[:id])
+    set_prayer
   end
 
   def update
-    prayer = Prayer.find(params[:id])
-    prayer.groups.each{|group| group.prayers.delete(prayer)}
-    if prayer.update(prayer_params)
+    set_prayer
+    @prayer.groups.each{|group| group.prayers.delete(prayer)}
+    if @prayer.update(prayer_params)
       flash[:notice] = "Successfully updated a prayer"
-      redirect_to prayer_path(prayer)
+      redirect_to prayer_path(@prayer)
     else
-      flash[:alert] = prayer.errors.full_messages.to_sentence
+      flash[:alert] = @prayer.errors.full_messages.to_sentence
       redirect_to edit_prayer_path
     end
   end
 
   def destroy
-    prayer = Prayer.find(params[:id])
-    prayer.destroy
+    set_prayer
+    @prayer.destroy
 		flash[:notice] = "Prayer was deleted"
 		redirect_to prayers_path
   end
@@ -56,5 +56,9 @@ class PrayersController < ApplicationController
 
   def prayer_params
     params.require("prayer").permit(:overview, :details, :is_anonymous, :is_public, group_ids:[])
+  end
+
+  def set_prayer
+    @prayer = Prayer.find(params[:id])
   end
 end

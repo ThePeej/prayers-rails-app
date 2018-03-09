@@ -5,7 +5,7 @@ class GroupsController < ApplicationController
   end
 
   def show
-    @group = Group.find(params[:id])
+    set_group
   end
 
   def new
@@ -13,43 +13,43 @@ class GroupsController < ApplicationController
   end
 
   def create
-    group = Group.new(group_params)
-    group.leader = current_user
-    group.members << current_user
+    @group = Group.new(group_params)
+    @group.leader = current_user
+    @group.members << current_user
     
     if group.save
       flash[:notice] = "Successfully started a new prayer group"
-      redirect_to group_path(group)
+      redirect_to group_path(@group)
     else
-      flash[:alert] = group.errors.full_messages.to_sentence
+      flash[:alert] = @group.errors.full_messages.to_sentence
       redirect_to new_group_path
     end
   end
 
   def edit
-    @group = Group.find(params[:id])
+    set_group
   end
 
   def update
-    group = Group.find(params[:id])
-    if group.update(group_params)
+    set_group
+    if @group.update(group_params)
       flash[:notice] = "Successfully updated prayer group"
-      redirect_to group_path(group)
+      redirect_to group_path(@group)
     else
-      flash[:alert] = group.errors.full_messages.to_sentence
+      flash[:alert] = @group.errors.full_messages.to_sentence
       redirect_to new_group_path
     end
   end 
 
   def destroy
-    group = Group.find(params[:id])
-    group.destroy
+    set_group
+    @group.destroy
 		flash[:notice] = "Group was deleted"
 		redirect_to groups_path
   end
 
   def add
-    group = Group.find(params[:id])
+    set_group
     raise group_params[:members].inspect
     # if User.find_by(:username => group_params[:members]) || User.find_by(:email => group_params[:members])
 		# 	new_member = User.find_by(:username => group_params[:members]) if !!User.find_by(:username => group_params[:members])
@@ -64,25 +64,29 @@ class GroupsController < ApplicationController
   end
 
   def join
-    group = Group.find(params[:id])
-    group.members << current_user
-    group.save
+    set_group
+    @group.members << current_user
+    @group.save
     flash[:notice] = "You've joined the group!"
-    redirect_to group_path(group)
+    redirect_to group_path(@group)
   end
 
   def leave
-    group = Group.find(params[:id])
-    group.members.delete(current_user)
-    group.save
+    set_group
+    @group.members.delete(current_user)
+    @group.save
     flash[:notice] = "You've left the group"
-    redirect_to group_path(group)
+    redirect_to group_path(@group)
   end 
 
   private
 
   def group_params
     params.require("group").permit(:name, :description, :is_public, members:[:name])
+  end
+
+  def set_group
+    @group = Group.find(params[:id])
   end
 
 end

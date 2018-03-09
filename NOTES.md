@@ -1,6 +1,6 @@
 To Do
 
-User show page
+User show page (public profile)
 
 User account edit page
 
@@ -9,8 +9,6 @@ CanCan authorization
 Third Party User Login
 
 Finish add member feature (nested form writer?) (potentially move to edit group page within group form to use fields_for properly...... hopefully)
-
-Add prechecked option for prayer if user has no groups
 
 refactor controllers to set group/prayer before specific actions (group.find(params[:id]))
 
