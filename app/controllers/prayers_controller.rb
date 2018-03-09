@@ -29,10 +29,12 @@ class PrayersController < ApplicationController
 
   def edit
     set_prayer
+    authorize @prayer
   end
 
   def update
     set_prayer
+    authorize @prayer
     @prayer.groups.each{|group| group.prayers.delete(prayer)}
     if @prayer.update(prayer_params)
       flash[:notice] = "Successfully updated a prayer"
@@ -46,6 +48,7 @@ class PrayersController < ApplicationController
   def destroy
     set_prayer
     @prayer.destroy
+    authorize @prayer
 		flash[:notice] = "Prayer was deleted"
 		redirect_to prayers_path
   end
