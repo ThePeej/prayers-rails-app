@@ -2,7 +2,7 @@ To Do
 
 User account/registration edit page (DEVISE)
 
-Third Party User Login (DEVISE/OMNIAUTH)
+Third Party User Login (DEVISE/OMNIAUTH => Facebook)
 
 
 
