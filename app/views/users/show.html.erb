@@ -5,7 +5,6 @@
 <h4 class="subtitle is-6"><strong>Favorite Verse:</strong> <%=@user.verse %></h4>
 <br>
 <h2 class="title is-5">Public Prayer Groups:</h2>
-<h4><%= "You have not joined any groups yet" if @user.groups.size == 0 %></h4>
 <%= render partial: 'user_groups_collection', collection:@user.public_groups, as: :group || "#{@user.username} has not joined any groups yet"%>
 
 <br><br>

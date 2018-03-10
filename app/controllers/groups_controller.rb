@@ -60,7 +60,6 @@ class GroupsController < ApplicationController
     authorize @group, :leader?
     find_and_add_member
     redirect_to group_path(@group)
-
   end
 
   def join

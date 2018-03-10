@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
     set_prayer
     @comment = Comment.new(comment_params)
     @comment.commenter = current_user
-    if comment.save
+    if @comment.save
       flash[:notice] = "Successfully posted a prayer"
     else
       flash[:alert] = @comment.errors.full_messages.to_sentence
