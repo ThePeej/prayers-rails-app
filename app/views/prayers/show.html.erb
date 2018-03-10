@@ -51,4 +51,4 @@
 
 <%# Comments Index View %>
 <h1 class="title is-4"><u>Comments</u></h1>
-<%= render partial: 'comments/comments_collection', collection: @prayer.all_comments, as: :comment, locals:{prayer: @prayer} %>
+<%= render(partial: 'comments/comments_collection', collection: @prayer.all_comments, as: :comment, locals:{prayer: @prayer}) || "No comments have been posted"%>
