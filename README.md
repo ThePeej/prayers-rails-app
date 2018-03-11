@@ -17,6 +17,9 @@ The project is a simple CRUD app that allows a user to create, read, update, and
 		- Prayers can be posted anonymously
 		- Prayers can be posted only to specific groups that the user is part of.
 		- Prayers can be posted to the "public" prayers index page.
+  - Comments will belong to user (commenter) and prayer (commented prayer)
+    - Comments must contain content
+    - New comments are entered via the prayer show page
 
 
 

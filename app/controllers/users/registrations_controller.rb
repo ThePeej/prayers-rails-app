@@ -21,14 +21,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # PUT /resource
   def update
     self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
-    prev_unconfirmed_email = resource.unconfirmed_email if resource.respond_to?(:unconfirmed_email)
     
     if resource.update(account_update_params)
       flash[:notice] = "Successfully updated account"
     else
+      # raise account_update_params.inspect
       flash[:alert] = resource.errors.full_messages.to_sentence
     end
-    bypass_sign_in resource, scope: resource_name
+    # bypass_sign_in resource, scope: resource_name
     redirect_to edit_user_registration_path(resource)
   end
 
@@ -58,7 +58,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
-    if account_update_params[:password] == nil
+    if account_update_params[:password] == "" && account_update_params[:password] == account_update_params[:password_confirmation]
       devise_parameter_sanitizer.permit(:account_update) {|u|u.permit(:username, :name, :bio, :church, :verse)}
     else
       devise_parameter_sanitizer.permit(:account_update) {|u|u.permit(:username, :name, :bio, :church, :verse, :password, :password_confirmation, :current_password)}
