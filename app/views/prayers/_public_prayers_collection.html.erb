@@ -12,8 +12,9 @@
 					<%= prayer.created_at.strftime("%m/%d/%y at %I:%M%p %Z")%>
 			</div>
 			<div class="message-body">
-				<%=prayer.details%>	
+				<p><%=prayer.details%></p>
 		</div>
 	</article>
 </a>
-<br>
+<%= link_to "#{pluralize(prayer.comments.count, 'comment')}", prayer_comments_path(prayer), class: "button is-small is-text" %>
+<br><br>
