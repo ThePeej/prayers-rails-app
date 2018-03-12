@@ -9,4 +9,12 @@ class PrayerPolicy < ApplicationPolicy
     user == record.author
   end
 
+  def show?
+    user == record.author || record.is_public
+  end
+
+  def show_comments?
+    user == record.author || record.commenters.include?(user) || record.is_public
+  end
+
 end

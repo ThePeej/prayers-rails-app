@@ -3,6 +3,7 @@ class CommentsController < ApplicationController
 
   def index
     set_prayer
+    authorize @prayer, :show_comments?
     @comment = @prayer.all_comments
   end
 

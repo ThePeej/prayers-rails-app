@@ -7,6 +7,7 @@ class PrayersController < ApplicationController
 
   def show
     set_prayer
+    authorize @prayer
     @comment = Comment.new(:prayer_id => params[:id])
   end
 

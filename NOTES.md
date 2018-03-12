@@ -1,12 +1,11 @@
 To Do
 
-Fix account update with blank password
+Fix Prayer Authorization via Pundit
+
+Fix Leaving Group reroute page
 
 Test everything (all authorization, and look over old sinatra app code notes), wrap up final details and spec.md notes.
 
-Record Video Demo
-
-Blog Post
 
 SUBMIT!!!
 
