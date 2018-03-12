@@ -76,8 +76,8 @@ class GroupsController < ApplicationController
     authorize @group
     @group.members.delete(current_user)
     @group.save
-    flash[:notice] = "You've left the group"
-    redirect_to group_path(@group)
+    flash[:notice] = "You've left #{@group.name}"
+    redirect_to groups_path
   end 
 
   private
