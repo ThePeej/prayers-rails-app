@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     patch 'join', on: :member
     patch 'leave', on: :member
     resources :members, only: [:create]
+    resources :group_comments
   end
 
   # patch '/groups/:id/add', to: 'groups#add', as: 'add_member'

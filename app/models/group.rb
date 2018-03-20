@@ -9,7 +9,10 @@ class Group < ApplicationRecord
 	has_many :group_prayers
 	has_many :prayers, through: :group_prayers
 
-	belongs_to :leader, :class_name => "User"
+  belongs_to :leader, :class_name => "User"
+  
+  has_many :group_comments
+  has_many :users, through: :group_comments
 
 	def self.all_public
     self.all.find_all{|group| group.is_public}.sort.reverse #collects and displays only public groups
@@ -21,6 +24,10 @@ class Group < ApplicationRecord
     else
       self.prayers.where(is_public: true).sort.reverse
     end
+  end
+
+  def all_group_comments
+    self.group_comments.sort.reverse
   end
   
 end

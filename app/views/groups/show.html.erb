@@ -10,6 +10,16 @@
   <% end %>
 </ul>
 <br>
+<%# New Comment Form %>
+<hr>
+<%= render partial: 'group_comments/group_comment_form', locals: {group: @group, group_comment: @group_comment} %>
+<br>
+
+<%# Comments Index View %>
+<h1 class="title is-4"><u>Group Comments</u></h1>
+<%= render(partial: 'group_comments/group_comments_collection', collection: @group.all_group_comments, as: :comment, locals:{group: @group}) || "No comments have been posted"%>
+
+<hr>
 
 <% if policy(@group).leader? %>
 

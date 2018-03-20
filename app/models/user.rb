@@ -17,6 +17,9 @@ class User < ApplicationRecord
   has_many :comments
   has_many :commented_prayers, through: :comments
 
+  has_many :group_comments
+  has_many :commented_groups, through: :group_comments
+
   def public_groups
     self.groups.find_all{|group|group.is_public}
   end

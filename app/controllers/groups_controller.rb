@@ -9,6 +9,7 @@ class GroupsController < ApplicationController
   def show
     set_group
     @prayers = policy_scope(Prayer)
+    @group_comment = GroupComment.new(:group_id => @group.id)
     authorize @group
   end
 
