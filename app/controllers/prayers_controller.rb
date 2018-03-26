@@ -56,11 +56,12 @@ class PrayersController < ApplicationController
 
   ######################
 
-  def next
+  # def next
     # need to receive id of prayer from which next/previous prayer button is clicked
-    @prayer = Prayer.find(params[:prayer_id])
-    render @prayer.next_public_prayer
-  end
+    # raise params[:prayer_id].inspect
+  #   @prayer = Prayer.find(params[:prayer_id])
+  #   render json: @prayer.next_public_prayer
+  # end
 
 
 

@@ -19,8 +19,8 @@ Rails.application.routes.draw do
 
   root to: "home#index"
   get '/home', to: 'home#landing', as: 'landing'
-  get '/prayers/:prayer_id/next', to: 'prayers#next', as: 'next_prayer'
-  get '/prayers/:prayer_id/previous', to: 'prayers#previous', as: 'previous_prayer'
+  # post '/prayers/:prayer_id/next', to: 'prayers#next', as: 'next_prayer'
+  # post '/prayers/:prayer_id/previous', to: 'prayers#previous', as: 'previous_prayer'
 
   resources :users, only: [:show]
   
