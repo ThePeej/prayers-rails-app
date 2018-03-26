@@ -6,7 +6,6 @@ class GroupCommentsController < ApplicationController
     @group_comment = GroupComment.new(group_comment_params)
     @group_comment.commenter = current_user
     if @group_comment.save
-      flash[:notice] = "Successfully posted a comment"
       render 'show', :layout => false
     else
       flash[:alert] = @group_comment.errors.full_messages.to_sentence

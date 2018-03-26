@@ -27,4 +27,11 @@ class Prayer < ApplicationRecord
     self.comments.sort.reverse
   end
 
+  def next_public_prayer
+    public_prayer_ids = Prayer.all_public.collect{|x| x.id}.reverse
+    next_prayer_index = public_prayer_ids.index(self.id) + 1
+    next_prayer_id = public_prayer_ids[next_prayer_index]
+    Prayer.find(next_prayer_id)
+  end
+
 end

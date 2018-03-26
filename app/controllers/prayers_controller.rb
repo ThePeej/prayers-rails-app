@@ -54,6 +54,16 @@ class PrayersController < ApplicationController
 		redirect_to prayers_path
   end
 
+  ######################
+
+  def next
+    # need to receive id of prayer from which next/previous prayer button is clicked
+    @prayer = Prayer.find(params[:prayer_id])
+    render @prayer.next_public_prayer
+  end
+
+
+
 
 
   private

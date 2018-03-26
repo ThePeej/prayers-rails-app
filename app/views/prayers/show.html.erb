@@ -1,4 +1,7 @@
 <div class="content">
+  <button id="previous_prayer" class="button is-text" data-prayer-id="<%= @prayer.id %>">Previous Prayer</button>
+  <%= link_to "Next Prayer", next_prayer_path(@prayer), class: "button is-light" %>
+  <br>
   <h1 class="title is-3"><%= @prayer.overview %></h1>
 
   <% if @prayer.is_anonymous && @prayer.author == current_user%>
