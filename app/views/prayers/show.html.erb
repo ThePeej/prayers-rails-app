@@ -49,6 +49,16 @@
 <%= render partial: 'comments/comment_form', locals: {prayer:@prayer, comment: @comment} %>
 <br>
 
-<%# Comments Index View %>
+
+<%# New AJAX comments %>
+<button id="show_comments" class="button is-light" data-prayer-id="<%= @prayer.id %>" data-current-user="<%= current_user.username %>">Show Comments (<%= @prayer.comments.count %>)</button>
+<br><br>
+<div id="comments_index">
+  
+</div>
+
+<%# Old Comments Index View %>
+<!--
 <h1 class="title is-4"><u>Comments</u></h1>
-<%= render(partial: 'comments/comments_collection', collection: @prayer.all_comments, as: :comment, locals:{prayer: @prayer}) || "No comments have been posted"%>
+<%= render(partial: 'comments/comments_collection', collection: @prayer.all_comments, as: :comment, locals:{prayer: @prayer}) || "No comments have been posted" %>
+-->
