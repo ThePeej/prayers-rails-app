@@ -26,11 +26,11 @@ function createGroupComment(form){
   let url = form.action
   let data = $(form).serialize();
   let posting = $.post(url, data)
-  posting.done(function(response){
-    debugger;
+  posting.done(function(comment){
+    $('div#group_comments').prepend(comment);
+    $('#group_comment_content').val('');
   })
 }
-
 
 //////////////////////////////////////////////
 // AJAX render of prayer_comments index view
