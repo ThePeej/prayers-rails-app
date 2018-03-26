@@ -4,7 +4,12 @@ class CommentsController < ApplicationController
   def index
     set_prayer
     authorize @prayer, :show_comments?
-    @comment = @prayer.all_comments
+    @comments = @prayer.all_comments
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: @comments }
+    end
+
   end
 
   def create
