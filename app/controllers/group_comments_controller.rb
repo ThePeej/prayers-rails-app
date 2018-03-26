@@ -7,10 +7,11 @@ class GroupCommentsController < ApplicationController
     @group_comment.commenter = current_user
     if @group_comment.save
       flash[:notice] = "Successfully posted a comment"
+      render 'show', :layout => false
     else
       flash[:alert] = @group_comment.errors.full_messages.to_sentence
+      redirect_to group_path(@group)
     end
-    redirect_to group_path(@group)
   end
 
 

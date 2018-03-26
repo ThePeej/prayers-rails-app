@@ -1,8 +1,11 @@
 $(function() {
   console.log("loaded!")
 
-  $('img#prayer_hands').click(function(){
-    console.log("HAAAAAAAAAAAAAAAAAAAAAANDS!")
+  $('form#new_group_comment').submit(function(e){
+    
+    createGroupComment(this);
+
+    e.preventDefault();
   })
 
   $('button#show_comments').click(function(e){
@@ -10,11 +13,23 @@ $(function() {
       hideComments()
     } else {
       showComments(this)
-    }
-    
+    }    
   })
+
 })
 
+/////////////////////////////////////
+// AJAX post of create group_comment
+/////////////////////////////////////
+
+function createGroupComment(form){
+  let url = form.action
+  let data = $(form).serialize();
+  let posting = $.post(url, data)
+  posting.done(function(response){
+    debugger;
+  })
+}
 
 
 //////////////////////////////////////////////
