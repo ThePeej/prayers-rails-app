@@ -1,13 +1,13 @@
 To Do
 
-Fix Prayer Authorization via Pundit
+Set up Asset Pipeline
 
-Fix Leaving Group reroute page
+Add jquery CDN
 
-Test everything (all authorization, and look over old sinatra app code notes), wrap up final details and spec.md notes.
+Move Bulma CDN script tags
 
 
-SUBMIT!!!
+
 
 Model Associations
 
