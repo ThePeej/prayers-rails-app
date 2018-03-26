@@ -16,6 +16,11 @@ $(function() {
 })
 
 
+
+//////////////////////////////////////////////
+// AJAX render of prayer_comments index view
+//////////////////////////////////////////////
+
 function showComments(button) {
   let prayerId = parseInt(button.dataset.prayerId)
   let currentUser = button.dataset.currentUser
@@ -42,7 +47,6 @@ function hideComments() {
   $('div#comments_index')[0].innerHTML = '';
   $('button#show_comments')[0].innerHTML = `Show Comments (${commentCount})`
 }
-
 
 class Comment {
 

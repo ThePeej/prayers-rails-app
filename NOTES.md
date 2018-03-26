@@ -1,13 +1,5 @@
 To Do
 
-Set up Asset Pipeline
-
-Add jquery CDN
-
-Move Bulma CDN script tags
-
-
-
 
 Model Associations
 
