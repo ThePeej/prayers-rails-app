@@ -1,0 +1,2 @@
+class BiblePrayer < ApplicationRecord
+end

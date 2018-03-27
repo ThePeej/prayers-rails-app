@@ -1,0 +1,2 @@
+class BiblePrayersController < ApplicationController
+end
