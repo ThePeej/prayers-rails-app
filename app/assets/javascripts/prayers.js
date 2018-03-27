@@ -1,17 +1,23 @@
 
+$(function(){
+  console.log("Loaded!")
+})
+
 $('button#next_bible_prayer').click(function(){
+  console.log("Load Next Bible Prayer")
   loadNextBiblePrayer(this)
 })
 
 $('button#previous_bible_prayer').click(function () {
-  
+  console.log("Load Previous Bible Prayer")
+  loadPreviousBiblePrayer(this)
 })
 
 function loadNextBiblePrayer(button){
   let biblePrayerId = parseInt(button.dataset.biblePrayerId) + 1
   let posting = $.get(`/bible_prayers/${biblePrayerId}.json`)
   posting.done(function (bible_prayer) {
-    let id = comment["id"]
+    let id = bible_prayer["id"]
     let title = bible_prayer["title"]
     let verse = bible_prayer["verse"]
     let summary = bible_prayer["summary"]
@@ -19,9 +25,27 @@ function loadNextBiblePrayer(button){
     let notFirst = bible_prayer["is_not_first"]
     let notLast = bible_prayer["is_not_last"]
 
-    comment = new BiblePrayer(id, title, verse, summary, scripture, notFirst, notLast)
-    comment.display()
+    biblePrayer = new BiblePrayer(id, title, verse, summary, scripture, notFirst, notLast)
+    biblePrayer.display()
     
+  })
+}
+
+function loadPreviousBiblePrayer(button) {
+  let biblePrayerId = parseInt(button.dataset.biblePrayerId) -1
+  let posting = $.get(`/bible_prayers/${biblePrayerId}.json`)
+  posting.done(function (bible_prayer) {
+    let id = bible_prayer["id"]
+    let title = bible_prayer["title"]
+    let verse = bible_prayer["verse"]
+    let summary = bible_prayer["summary"]
+    let scripture = bible_prayer["scripture"]
+    let notFirst = bible_prayer["is_not_first"]
+    let notLast = bible_prayer["is_not_last"]
+
+    biblePrayer = new BiblePrayer(id, title, verse, summary, scripture, notFirst, notLast)
+    biblePrayer.display()
+
   })
 }
 
@@ -35,23 +59,24 @@ class BiblePrayer {
     this.scripture = scripture;
     this.notFirst = notFirst;
     this.notLast = notLast;
+    debugger;
   }
 
   display() {
-    let biblePrayer;
+    let biblePrayer = ''
     if (this.notFirst) {
       biblePrayer += `<button id="previous_bible_prayer" data-bible-prayer-id="${this.id}" class="button is-text" style="float:left;">Previous Bible Prayer</button>`
     }
     if (this.notLast) {
-      biblePrayer += `<button id="next_bible_prayer" data-bible-prayer-id="${this.id}" class="button is-text" style="float:right;">Previous Bible Prayer</button>`
+      biblePrayer += `<button id="next_bible_prayer" data-bible-prayer-id="${this.id}" class="button is-text" style="float:right;">Next Bible Prayer</button>`
     }
-    biblePrayer += `<h1 class="title is-2">${this.title}</h1>`
-    biblePrayer += `< h4 class="subtitle is-4">${this.verse}</h4 >`
+    biblePrayer += `<br><br><h1 class="title is-2">${this.title}</h1>`
+    biblePrayer += `<h4 class="subtitle is-4">${this.verse}</h4>`
     biblePrayer += `<h4 class="subtitle is-6">${this.summary}</h4>`
     biblePrayer += `<div class="column is-one-third is-offset-one-third"><hr></div>`
     biblePrayer += `<h4 class="subtitle is-5">${this.scripture}</h4>`
 
-    $('div#bible-prayer').innerHTML(biblePrayer)
+    $('div#bible-prayer')[0].innerHTML = biblePrayer
   }
 }
 
