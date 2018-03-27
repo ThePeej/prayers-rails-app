@@ -3,12 +3,12 @@ $(function(){
   console.log("Loaded!")
 })
 
-$('button#next_bible_prayer').click(function(){
+$('button#next_bible_prayer').click(function(e){
   console.log("Load Next Bible Prayer")
   loadNextBiblePrayer(this)
 })
 
-$('button#previous_bible_prayer').click(function () {
+$('button#previous_bible_prayer').click(function(e){
   console.log("Load Previous Bible Prayer")
   loadPreviousBiblePrayer(this)
 })
