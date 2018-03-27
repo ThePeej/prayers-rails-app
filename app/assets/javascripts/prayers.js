@@ -1,22 +1,18 @@
-$(function() {
-  console.log("loaded!")
+$('form#new_group_comment').submit(function(e){
+  
+  createGroupComment(this);
 
-  $('form#new_group_comment').submit(function(e){
-    
-    createGroupComment(this);
-
-    e.preventDefault();
-  })
-
-  $('button#show_comments').click(function(e){
-    if ($('article.message').length){
-      hideComments()
-    } else {
-      showComments(this)
-    }    
-  })
-
+  e.preventDefault();
 })
+
+$('button#show_comments').click(function(e){
+  if ($('article.message').length){
+    hideComments()
+  } else {
+    showComments(this)
+  }    
+})
+
 
 /////////////////////////////////////
 // AJAX post of create group_comment

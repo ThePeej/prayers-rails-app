@@ -1,5 +1,21 @@
 To Do
 
+Add guided_prayers resource and implement ajax navigation of show pages
+
+Schema:
+Guided Prayers
+	- Author
+	- Topics
+	- Content
+
+
+Serializer
+
+
+
+
+
+------------------------------
 
 Model Associations
 
