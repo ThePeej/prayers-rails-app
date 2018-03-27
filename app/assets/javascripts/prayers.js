@@ -1,20 +1,32 @@
 
 $(function(){
   console.log("Loaded!")
+  addBiblePrayerNavigationEvent()
+  
 })
 
-$('button#next_bible_prayer').click(function(e){
-  console.log("Load Next Bible Prayer")
-  loadNextBiblePrayer(this)
-})
 
-$('button#previous_bible_prayer').click(function(e){
-  console.log("Load Previous Bible Prayer")
-  loadPreviousBiblePrayer(this)
-})
+function addBiblePrayerNavigationEvent() {
+  $('button#next_bible_prayer').click(function (e) {
+    console.log("Load Next Bible Prayer")
+    loadBiblePrayer(this, true)
+  })
 
-function loadNextBiblePrayer(button){
-  let biblePrayerId = parseInt(button.dataset.biblePrayerId) + 1
+  $('button#previous_bible_prayer').click(function (e) {
+    console.log("Load Previous Bible Prayer")
+    loadBiblePrayer(this, false)
+  })
+}
+
+
+
+function loadBiblePrayer(button, next){
+  let biblePrayerId = 0;
+  if (next) {
+    biblePrayerId = parseInt(button.dataset.biblePrayerId) + 1
+  } else {
+    biblePrayerId = parseInt(button.dataset.biblePrayerId) - 1
+  }
   let posting = $.get(`/bible_prayers/${biblePrayerId}.json`)
   posting.done(function (bible_prayer) {
     let id = bible_prayer["id"]
@@ -27,12 +39,12 @@ function loadNextBiblePrayer(button){
 
     biblePrayer = new BiblePrayer(id, title, verse, summary, scripture, notFirst, notLast)
     biblePrayer.display()
-    
+    addBiblePrayerNavigationEvent()
   })
 }
 
 function loadPreviousBiblePrayer(button) {
-  let biblePrayerId = parseInt(button.dataset.biblePrayerId) -1
+  
   let posting = $.get(`/bible_prayers/${biblePrayerId}.json`)
   posting.done(function (bible_prayer) {
     let id = bible_prayer["id"]
@@ -45,6 +57,7 @@ function loadPreviousBiblePrayer(button) {
 
     biblePrayer = new BiblePrayer(id, title, verse, summary, scripture, notFirst, notLast)
     biblePrayer.display()
+    addBiblePrayerNavigationEvent()
 
   })
 }
@@ -59,7 +72,6 @@ class BiblePrayer {
     this.scripture = scripture;
     this.notFirst = notFirst;
     this.notLast = notLast;
-    debugger;
   }
 
   display() {
