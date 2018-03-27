@@ -1,22 +1,70 @@
-$('form#new_group_comment').submit(function(e){
+
+$('button#next_bible_prayer').click(function(){
+  loadNextBiblePrayer(this)
+})
+
+$('button#previous_bible_prayer').click(function () {
   
-  createGroupComment(this);
-
-  e.preventDefault();
 })
 
-$('button#show_comments').click(function(e){
-  if ($('article.message').length){
-    hideComments()
-  } else {
-    showComments(this)
-  }    
-})
+function loadNextBiblePrayer(button){
+  let biblePrayerId = parseInt(button.dataset.biblePrayerId) + 1
+  let posting = $.get(`/bible_prayers/${biblePrayerId}.json`)
+  posting.done(function (bible_prayer) {
+    let id = comment["id"]
+    let title = bible_prayer["title"]
+    let verse = bible_prayer["verse"]
+    let summary = bible_prayer["summary"]
+    let scripture = bible_prayer["scripture"]
+    let notFirst = bible_prayer["is_not_first"]
+    let notLast = bible_prayer["is_not_last"]
 
+    comment = new BiblePrayer(id, title, verse, summary, scripture, notFirst, notLast)
+    comment.display()
+    
+  })
+}
+
+class BiblePrayer {
+
+  constructor(id, title, verse, summary, scripture, notFirst, notLast) {
+    this.id = id;
+    this.title = title;
+    this.verse = verse;
+    this.summary = summary;
+    this.scripture = scripture;
+    this.notFirst = notFirst;
+    this.notLast = notLast;
+  }
+
+  display() {
+    let biblePrayer;
+    if (this.notFirst) {
+      biblePrayer += `<button id="previous_bible_prayer" data-bible-prayer-id="${this.id}" class="button is-text" style="float:left;">Previous Bible Prayer</button>`
+    }
+    if (this.notLast) {
+      biblePrayer += `<button id="next_bible_prayer" data-bible-prayer-id="${this.id}" class="button is-text" style="float:right;">Previous Bible Prayer</button>`
+    }
+    biblePrayer += `<h1 class="title is-2">${this.title}</h1>`
+    biblePrayer += `< h4 class="subtitle is-4">${this.verse}</h4 >`
+    biblePrayer += `<h4 class="subtitle is-6">${this.summary}</h4>`
+    biblePrayer += `<div class="column is-one-third is-offset-one-third"><hr></div>`
+    biblePrayer += `<h4 class="subtitle is-5">${this.scripture}</h4>`
+
+    $('div#bible-prayer').innerHTML(biblePrayer)
+  }
+}
 
 /////////////////////////////////////
 // AJAX post of create group_comment
 /////////////////////////////////////
+
+$('form#new_group_comment').submit(function (e) {
+
+  createGroupComment(this);
+
+  e.preventDefault();
+})
 
 function createGroupComment(form){
   let url = form.action
@@ -31,6 +79,14 @@ function createGroupComment(form){
 //////////////////////////////////////////////
 // AJAX render of prayer_comments index view
 //////////////////////////////////////////////
+
+$('button#show_comments').click(function (e) {
+  if ($('article.message').length) {
+    hideComments()
+  } else {
+    showComments(this)
+  }
+})
 
 function showComments(button) {
   let prayerId = parseInt(button.dataset.prayerId)

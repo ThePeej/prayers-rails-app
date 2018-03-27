@@ -6,6 +6,10 @@ class BiblePrayersController < ApplicationController
 
   def show
     @bible_prayer = BiblePrayer.find(params[:id])
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @bible_prayer }
+    end
   end
 
   def new
