@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :bible_prayers
+  resources :bible_prayers, only: [:new, :edit, :show, :create, :update]
   resources :groups do
     patch 'add_member', on: :member
     patch 'join', on: :member

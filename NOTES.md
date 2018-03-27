@@ -3,10 +3,20 @@ To Do
 Add guided_prayers resource and implement ajax navigation of show pages
 
 Schema:
-Guided Prayers
-	- Author
-	- Topics
-	- Content
+Bible Prayers
+	- Title: The Lord’s Prayer
+	- Verse: Matthew 6:9–13
+	- Summary: This prayer is the true classic. Most of us have said this prayer and could likely recite it right now. But there’s much more to this model that Jesus gave us than rote recitation. This is a prayer with real power: God’s kingdom coming, God’s will being done, all that we need for the day. It’s truly power packed.
+	- Content: “Our Father in heaven,
+hallowed be your name.
+Your kingdom come,
+your will be done,
+on earth as it is in heaven.
+Give us this day our daily bread,
+and forgive us our debts,
+as we also have forgiven our debtors.
+And lead us not into temptation,
+but deliver us from evil.”
 
 
 Serializer
