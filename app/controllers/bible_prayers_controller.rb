@@ -1,5 +1,9 @@
 class BiblePrayersController < ApplicationController
 
+  def index
+    @bible_prayers = BiblePrayer.all
+  end
+
   def show
     @bible_prayer = BiblePrayer.find(params[:id])
   end
@@ -22,8 +26,6 @@ class BiblePrayersController < ApplicationController
     @bible_prayer.update(bible_prayer_params)
     redirect_to bible_prayer_path(@bible_prayer)
   end
-
-
 
   private
 
