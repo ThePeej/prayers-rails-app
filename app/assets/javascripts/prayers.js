@@ -1,10 +1,11 @@
 
-$(function(){
-  console.log("Loaded!")
-  addBiblePrayerNavigationEvent()
-  
-})
+///////////////////////////////////////////
+// AJAX render of bible_prayer show views
+///////////////////////////////////////////
 
+$(function(){
+  addBiblePrayerNavigationEvent()
+})
 
 function addBiblePrayerNavigationEvent() {
   $('button#next_bible_prayer').click(function (e) {
@@ -17,8 +18,6 @@ function addBiblePrayerNavigationEvent() {
     loadBiblePrayer(this, false)
   })
 }
-
-
 
 function loadBiblePrayer(button, next){
   let biblePrayerId = 0;
@@ -43,24 +42,6 @@ function loadBiblePrayer(button, next){
   })
 }
 
-function loadPreviousBiblePrayer(button) {
-  
-  let posting = $.get(`/bible_prayers/${biblePrayerId}.json`)
-  posting.done(function (bible_prayer) {
-    let id = bible_prayer["id"]
-    let title = bible_prayer["title"]
-    let verse = bible_prayer["verse"]
-    let summary = bible_prayer["summary"]
-    let scripture = bible_prayer["scripture"]
-    let notFirst = bible_prayer["is_not_first"]
-    let notLast = bible_prayer["is_not_last"]
-
-    biblePrayer = new BiblePrayer(id, title, verse, summary, scripture, notFirst, notLast)
-    biblePrayer.display()
-    addBiblePrayerNavigationEvent()
-
-  })
-}
 
 class BiblePrayer {
 
@@ -108,6 +89,9 @@ function createGroupComment(form){
   let data = $(form).serialize();
   let posting = $.post(url, data)
   posting.done(function(comment){
+    if ($('div#group_comments')[0].innerText === "No comments have been posted") {
+      $('div#group_comments')[0].innerHTML = ''
+    }
     $('div#group_comments').prepend(comment);
     $('#group_comment_content').val('');
   })
@@ -179,4 +163,3 @@ class Comment {
     $('button#show_comments')[0].innerHTML = "Hide Comments"
   }
 }
-

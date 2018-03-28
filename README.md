@@ -2,7 +2,7 @@
 #### A Sinatra Portfolio Project for Flatiron School
 ---
 
-The project is a simple CRUD app that allows a user to create, read, update, and destroy prayers posted on the app. Users are able to create groups and comment on prayers. This project is built with the intent to eventually deploy a fully functioning social website.
+The project is a simple CRUD app that allows a user to create, read, update, and destroy prayers posted on the app. Users are able to create groups and comment on prayers and groups. Users can also peruse a collection of prayers found throughout the Bible. 
 
 ## Functionality Overview:
 	- User will have many groups, and many prayers.
@@ -20,10 +20,13 @@ The project is a simple CRUD app that allows a user to create, read, update, and
   - Comments will belong to user (commenter) and prayer (commented prayer)
     - Comments must contain content
     - New comments are entered via the prayer show page
+	- Bible prayers are loaded dynamically as you navigate forward and backward
+	- Group comments are posted dynamically without a page refresh
+	- Prayer comments are displayed and hidden dynamically
 
 
 
-Built using Ruby Sinatra, ActiveRecord, SQLite3, Bulma CSS framework
+Built using HTML, CSS, Javascript, jquery, Ruby on Rails, and  Bulma CSS framework
 
 
 ## Installation Instructions
