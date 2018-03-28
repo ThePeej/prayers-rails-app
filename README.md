@@ -31,9 +31,9 @@ Built using HTML, CSS, Javascript, jquery, Ruby on Rails, and  Bulma CSS framewo
 
 ## Installation Instructions
 
-Fork/Clone this repo, and then navigate to the repo directory in your terminal.
+Clone this repo, and then navigate to the repo directory in your terminal.
 
-Then, run `bundle install` to install all gem dependencies.
+Run `bundle install` to install all gem dependencies.
 
 Run all rake migrations with `rake db:migrate`
 
